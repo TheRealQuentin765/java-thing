@@ -1,25 +1,25 @@
 public class Pair {
-    private final int base;
-    private final int diff;
+    private final double base;
+    private final double diff;
 
-    public Pair(int base, int  diff) {
+    public Pair(double base, double  diff) {
         this.base = base;
         this.diff = Math.abs(diff);
     }
 
-    public int getBase() {
+    public double getBase() {
         return base;
     }
 
-    public int getDiff() {
+    public double getDiff() {
         return diff;
     }
 
-    public int getNum1() {
+    public double getNum1() {
         return base - diff;
     }
 
-    public int getNum2() {
+    public double getNum2() {
         return base + diff;
     }
 }
