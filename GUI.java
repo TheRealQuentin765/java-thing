@@ -4,14 +4,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GUI implements ActionListener {
-    JFormattedTextField textFieldA;
+    JFormattedTextField textFieldA = new JFormattedTextField("a");
+    JFormattedTextField textFieldB = new JFormattedTextField("b");
+    JFormattedTextField textFieldC = new JFormattedTextField("c");
+
     JButton button = new JButton("Calculate");
     JPanel panel = new JPanel();
     JFrame frame = new JFrame("Quadratic equationator");
     JLabel label = new JLabel("Result: ");
     String textA;
     public GUI() {
-        textFieldA = new JFormattedTextField("Wassup");
+
         textFieldA.setColumns(10);
         textFieldA.addActionListener(this);
 
@@ -19,7 +22,10 @@ public class GUI implements ActionListener {
         label.setAlignmentY(40);
 
         panel.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
-        panel.setLayout(new GridLayout(0, 1));
+        panel.setLayout(null);
+        label.setBounds(100,200,100,100);
+        frame.setBounds(500,500,1000,1000);
+
 
         panel.add(textFieldA);
         panel.add(button);
@@ -39,7 +45,7 @@ public class GUI implements ActionListener {
            textA = textFieldA.getText();
            textFieldA.selectAll();
            System.out.println(textA);
-//           panel.add(new JLabel("Hello"));
+           label.setText("Result: " + textA);
        }
     }
 }
