@@ -7,7 +7,6 @@ public class GUI implements ActionListener {
     JFormattedTextField textFieldA = new JFormattedTextField("");
     JFormattedTextField textFieldB = new JFormattedTextField("");
     JFormattedTextField textFieldC = new JFormattedTextField("");
-    JFormattedTextField blankTextField = new JFormattedTextField("");
     JLabel labelSquared = new JLabel("x^2 +");
     JLabel labelX = new JLabel("x +");
 
@@ -51,24 +50,25 @@ public class GUI implements ActionListener {
         Double A;
         Double B;
         Double C;
+
         if(event.getSource() == button) {
-            if(textFieldA.equals(blankTextField)){
+            if(textFieldA.getText().equals("")){
                 A = 1.0;
             }else{
                 A = Double.parseDouble(textFieldA.getText());}
-            if(textFieldB == blankTextField){
+            if(textFieldB.getText().equals("")){
                 B = 1.0;
             }else{
                 B = Double.parseDouble(textFieldB.getText());
             }
-           if(textFieldC == blankTextField){
+           if(textFieldC.getText().equals("")){
                C = 0.0;
            }else{
                C = Double.parseDouble(textFieldC.getText());
            }
 
-           x1.setText("X = " + QuadraticCalculator.calculate(A,B,C).getNum2());
-           x2.setText("X = " + QuadraticCalculator.calculate(A,B,C).getNum1());
+           x1.setText("X = " + QuadraticCalculator.calculate(A,B,C).getNum1());
+           x2.setText("X = " + QuadraticCalculator.calculate(A,B,C).getNum2());
        }
     }
 }
