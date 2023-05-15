@@ -51,7 +51,8 @@ public class GUI implements ActionListener {
            String textC = textFieldC.getText();
            textFieldA.selectAll();
            System.out.println(textA);
-           label.setText("Result: " + textA + textB + textC);
+           Pair result = QuadraticCalculator.calculate(Double.parseDouble(textA), Double.parseDouble(textB), Double.parseDouble(textC));
+           label.setText("Result: " + result.getNum1() + " and " + result.getNum2());
        }
     }
 }
