@@ -1,25 +1,50 @@
 public class Pair {
-    private final double base;
-    private final double diff;
+    private final ComplexValue first;
+    private final ComplexValue second;
 
-    public Pair(double base, double  diff) {
-        this.base = base;
-        this.diff = Math.abs(diff);
+    public Pair(double base, double  diff, boolean offsetMode) {
+        if (!offsetMode) {
+            this.first = new ComplexValue(base);
+            this.second = new ComplexValue(diff);
+            return;
+        }
+        double abs = Math.abs(diff);
+        this.first = new ComplexValue(base-abs);
+        this.second = new ComplexValue(base+abs);
     }
 
-    public double getBase() {
-        return base;
+    public Pair(ComplexValue base, ComplexValue  diff, boolean offsetMode) {
+//        System.out.println(diff);
+        if (!offsetMode) {
+            this.first = base;
+            this.second = diff;
+            return;
+        }
+        ComplexValue abs = diff.abs();
+        this.first = base.subtract(abs);
+        this.second = base.add(abs);
     }
 
-    public double getDiff() {
-        return diff;
+    public Pair(ComplexValue first, ComplexValue second) {
+        this.first = first;
+        this.second = second;
     }
 
-    public double getNum1() {
-        return base - diff;
+    public Pair(double first, double second) {
+        this.first = new ComplexValue(first);
+        this.second = new ComplexValue(second);
     }
 
-    public double getNum2() {
-        return base + diff;
+    public ComplexValue getNum1() {
+        return first;
+    }
+
+    public ComplexValue getNum2() {
+        return second;
+    }
+
+    @Override
+    public String toString() {
+        return first.toString() + " and " + second.toString();
     }
 }
