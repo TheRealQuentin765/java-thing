@@ -43,7 +43,7 @@ public class GUI implements ActionListener {
         frame.setContentPane(panel);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setBounds(100, 100, 300, 200); // Set frame size and position
+        frame.setBounds(100, 100, 400, 200); // Set frame size and position
         frame.setVisible(true);
     }
     public void actionPerformed(ActionEvent event) {
