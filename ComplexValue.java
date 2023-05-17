@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class ComplexValue {
     private final double real;
     private final double imaginary;
@@ -102,8 +104,37 @@ public class ComplexValue {
         return new ComplexValue(sign*real,sign*imaginary);
     }
 
+    private String round(double in) {
+
+//        return String.format("%g",in);
+
+        if (in == 0) return "0";
+        int exp = (int)(Math.log10(Math.abs(in)));
+        System.out.println(exp);
+        DecimalFormat df;
+        if (Math.abs(exp) > 5) df = new DecimalFormat("0.000E0");
+        else if (exp > 3) df = new DecimalFormat("#");
+        else if (exp > 2) df = new DecimalFormat("#.#");
+        else if (exp > 1) df = new DecimalFormat("#.##");
+        else if (exp > 0) df = new DecimalFormat("#.###");
+        else if (exp > -1) df = new DecimalFormat("0.####");
+        else if (exp > -2) df = new DecimalFormat("0.#####");
+        else if (exp > -3) df = new DecimalFormat("0.######");
+        else if (exp > -4) df = new DecimalFormat("0.#######");
+        else df = new DecimalFormat("0.0000###");
+        return df.format(in);
+    }
+
     @Override
     public String toString() {
-        return "(" + real + " + " + imaginary + "i)";
+        System.out.println("(" + (real) + " + " + (imaginary) + "i)");
+        if (real == 0) {
+            if (imaginary == 0)
+                return "(0)";
+            return "(" + round(imaginary) + "i)";
+        }
+        if (imaginary == 0)
+            return "(" + round(real) + ")";
+        return "(" + round(real) + " + " + round(imaginary) + "i)";
     }
 }
